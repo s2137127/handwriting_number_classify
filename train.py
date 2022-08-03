@@ -11,7 +11,7 @@ from data import get_dataloader
 if __name__ == "__main__":
     # Specifiy data folder path and model type(fully/conv)
     folder, model_type = sys.argv[1], sys.argv[2]
-
+    print("cuda:　", torch.cuda.is_available())
     # Get data loaders of training set and validation set
     train_loader, val_loader = get_dataloader(folder, batch_size=32)
     # Specify the type of model
@@ -105,7 +105,7 @@ if __name__ == "__main__":
                 valid_acc.append(accuracy)
                 valid_loss.append(loss_val)
         print("current loss: ", loss_val, "   valid_acc: ", accuracy)
-        print("best loss: ", best_loss)
+        print("best loss: ", best_acc)
         if accuracy > best_acc:
             cnt = 0
             best_acc = accuracy
