@@ -6,6 +6,8 @@ import torch.nn as nn
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as transforms
+from torchvision.datasets import ImageFolder
+from PIL import Image
 from model import ConvNet, MyNet
 from data import TestDataset
 
@@ -19,8 +21,12 @@ if __name__ == "__main__":
         model = MyNet()
 
     #######################################################################
-    # Modifiy this part to load your trained model
-    # TODO
+    if model_type == 'conv':
+        model.load_state_dict(torch.load('./checkpoint/ConvNet.pth'))
+        model.eval()
+    elif model_type == 'mynet':
+        model.load_state_dict(torch.load('./checkpoint/MyNet.pth'))
+        model.eval()
     #######################################################################
 
 
