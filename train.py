@@ -105,7 +105,7 @@ if __name__ == "__main__":
                 valid_acc.append(accuracy)
                 valid_loss.append(loss_val)
         print("current loss: ", loss_val, "   valid_acc: ", accuracy)
-        print("best loss: ", best_acc)
+        print("best_acc ", best_acc)
         if accuracy > best_acc:
             cnt = 0
             best_acc = accuracy
