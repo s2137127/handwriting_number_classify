@@ -26,8 +26,19 @@ class TestDataset(Dataset):
     def __init__(self, root_dir, transform=None):
         self.root_dir = root_dir
         self.transform = transform
-        self.images = glob.glob(root_dir + '*.png')
-        self.images.sort()
+        self.images =[]
+        # self.images = glob.glob(self.root_dir + '*.png')
+        # self.images = glob.glob('../hw2_data/test/4001.png')
+        '''''
+        for file in os.listdir(self.root_dir):
+            self.images.append(os.path.join(self.root_dir, file))
+        '''''
+        for i in range(1,31):
+            self.images.append(os.path.join(self.root_dir, f'40{i:02}.png'))
+
+        print(self.images)
+        #images = ['../hw2_data/test/*.png']
+        # self.images.sort()
 
     def __len__(self):
         return len(self.images)

@@ -10,6 +10,9 @@ from torchvision.datasets import ImageFolder
 from PIL import Image
 from model import ConvNet, MyNet
 from data import TestDataset
+import glob, os
+
+from PIL import Image
 
 
 if __name__ == "__main__":
@@ -37,7 +40,12 @@ if __name__ == "__main__":
 
     # Load data
     trans = transforms.Compose([transforms.Grayscale(),transforms.ToTensor(), transforms.Normalize((0.5,), (1.0,))])
+
+    print(data_path)
+
     test_set = TestDataset(data_path, transform=trans)
+    print(test_set)
+
     print('Length of Testing Set:', len(test_set))
     test_loader = DataLoader(dataset=test_set, batch_size=1, shuffle=False)
 
